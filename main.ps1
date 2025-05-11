@@ -6,7 +6,7 @@ $phaseScripts = Get-ChildItem -Path $phasesPath -Filter *.ps1 | Sort-Object Name
 $menuOptions = @(
     "1. Instalar Chocolatey (requiere reinicio)",
     "2. Configurar red",
-    "3. ?",
+    "3. Configurar reglas de firewall",
     "0. Salir"
 )
 
@@ -24,8 +24,9 @@ $selectedPhase = ""
 
 switch ($_input) {
     0 { clear; exit }
-    1 { $selectedPhase = "phase01.ps1"; }
-    2 { $selectedPhase = "phase02.ps1"; }
+    1 { $selectedPhase = "phase0$selectedPhase.ps1"; }
+    2 { $selectedPhase = "phase0$selectedPhase.ps1"; }
+    3 { $selectedPhase = "phase0$selectedPhase.ps1"}
     Default { Write-Host "Opcion no válida! Programa finalizado..." -ForegroundColor Red}
 }
 
