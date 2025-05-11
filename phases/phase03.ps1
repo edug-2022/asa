@@ -1,3 +1,5 @@
+Clear-Host
+
 $rules = @(
     "CoreNet-Diag-ICMP6-EchoRequest-Out",
     "CoreNet-Diag-ICMP6-EchoRequest-Out-NoScope",
@@ -13,3 +15,5 @@ foreach ($rule in $rules) {
     Enable-NetFirewallRule -Name "$rule"
     Get-NetFirewallRule -Name "$rule" | Select-Object Name, Enabled
 }
+
+Write-Host "Se han habilitado los puertos y reglas necesarias con éxito!" -ForegroundColor Green

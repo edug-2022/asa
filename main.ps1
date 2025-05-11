@@ -13,7 +13,17 @@ $menuOptions = @(
 #endregion
 
 Clear-Host
-Write-Host " ==== autobuild-a-server-automatically (asa) by: name ====" -ForegroundColor Cyan
+Write-Host "
+ ░▒▓██████▓▒░ ░▒▓███████▓▒░░▒▓██████▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░ 
+░▒▓████████▓▒░░▒▓██████▓▒░░▒▓████████▓▒░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░       
+░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░ 
+Autobuild a Server Automatically (ASA! <3)
+by: name
+" -ForegroundColor Cyan
 
 foreach ($option in $menuOptions) {
     Write-Host $option
