@@ -7,10 +7,10 @@ Try {
     $folderPath = "C:\Users\Administrador\Documents\WindowsPowerShell"
 
     if (-not (Test-Path -Path $folderPath)) {
-        New-Item -Path $folderPath -ItemType Directory
+        New-Item -Path $folderPath -ItemType Directory | Out-Null
     }
 
-    New-Item -Path $folderPath -Name "Microsoft.Powershell_profile.ps1" -ErrorAction Stop
+    New-Item -Path $folderPath -Name "Microsoft.Powershell_profile.ps1" -ErrorAction Stop | Out-Null
 
     Write-Host "Se ha creado un pefil por defecto para Powershell" -ForegroundColor Green
 
