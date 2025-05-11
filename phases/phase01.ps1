@@ -1,4 +1,4 @@
-﻿New-Item -Path "C:\Administrator\Documents\WindowsPowerShell\" -Name "Microsoft.Powershell_profile.ps1"
+﻿New-Item -Path "C:\Users\Administrator\Documents\WindowsPowerShell\" -Name "Microsoft.Powershell_profile.ps1"
 
 Write-Host "Se ha creado un pefil por defecto para Powershell" -ForegroundColor Green
 
