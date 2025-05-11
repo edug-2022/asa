@@ -3,7 +3,14 @@
 Write-Host "Ejecutando fase 1" -ForegroundColor Yellow; 
 
 Try {
-    New-Item -Path "C:\Users\Administrador\Documents\WindowsPowerShell\" -Name "Microsoft.Powershell_profile.ps1" -ErrorAction Stop
+
+    $folderPath = "C:\Users\Administrador\Documents\WindowsPowerShell"
+
+    if (-not (Test-Path -Path $folderPath)) {
+        New-Item -Path $folderPath -ItemType Directory
+    }
+
+    New-Item -Path $folderPath -Name "Microsoft.Powershell_profile.ps1" -ErrorAction Stop
 
     Write-Host "Se ha creado un pefil por defecto para Powershell" -ForegroundColor Green
 
