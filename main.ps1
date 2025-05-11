@@ -12,6 +12,7 @@ $menuOptions = @(
 
 #endregion
 
+Clear-Host
 Write-Host " ==== autobuild-a-server-automatically (asa) by: name ====" -ForegroundColor Cyan
 
 foreach ($option in $menuOptions) {
