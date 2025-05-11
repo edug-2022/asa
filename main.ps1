@@ -7,6 +7,7 @@ $menuOptions = @(
     "1. Instalar Chocolatey (requiere reinicio)",
     "2. Configurar red",
     "3. Configurar reglas de firewall",
+    "4. Instalar Active Directory"
     "0. Salir"
 )
 
@@ -36,7 +37,8 @@ switch ($_input) {
     0 { clear; exit }
     1 { $selectedPhase = "phase01.ps1"; }
     2 { $selectedPhase = "phase02.ps1"; }
-    3 { $selectedPhase = "phase03.ps1"}
+    3 { $selectedPhase = "phase03.ps1"; }
+    4 { $selectedPhase = "phase04.ps1"; }
     Default { Write-Host "Opcion no válida! Programa finalizado..." -ForegroundColor Red}
 }
 
