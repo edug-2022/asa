@@ -1,4 +1,4 @@
-#region Variables
+﻿#region Variables
 
 $phasesPath = Join-Path -Path $PSScriptRoot -ChildPath "phases"
 # Obtener todos los scripts de fase ordenados por nombre
@@ -23,8 +23,8 @@ $selectedPhase = ""
 
 switch ($_input) {
     0 { clear; exit }
-    1 { $selectedPhase = "phase01.ps1" }
-    2 { $selectedPhase = "phase02.ps1" }
+    1 { $selectedPhase = "phase01.ps1"; Write-Host "Ejecutando fase 1" -ForegroundColor Yellow; }
+    2 { $selectedPhase = "phase02.ps1"; Write-Host "Ejecutando fase 2" -ForegroundColor Yellow; }
     Default { Write-Host "Opcion no válida" }
 }
 
