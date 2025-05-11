@@ -1,4 +1,4 @@
-Clear-Host
+﻿Clear-Host
 
 $rules = @(
     "CoreNet-Diag-ICMP6-EchoRequest-Out",
