@@ -1,9 +1,13 @@
-# Instalar Active Dictory
+﻿# Instalar Active Dictory
 Clear-Host
 
 Try {
     Install-WindowsFeature -Name AD-Domain-Services -ErrorAction Stop
 
+    Clear-Host
+
+    Write-Host "Se ha instalado Active Directory" -ForegroundColor Green
+    Write-Host ""
     Write-Host "======= INSTALACION DE AD-DS =======" -ForegroundColor Cyan
 
     $domain = Read-Host "Ingrese el nombre del dominio"

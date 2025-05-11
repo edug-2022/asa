@@ -1,9 +1,23 @@
 ﻿function ConfigureAdapter {
     Try {
-    Rename-NetAdapter -Name "Ethernet 2" -NewName "semita" -ErrorAction Stop
-    Rename-NetAdapter -Name "Ethernet" -NewName "default" -ErrorAction Stop
+    $interfaces = Read-Host "¿Cuántas interfaces de red piensas configurar?"
+    Write-Host "=========="
 
-    Write-Host "Se ha cambiado con exito el nombre de las interfaces!" -ForegroundColor Green
+    For ($contador = 0; $contador -lt $interfaces; $contador++) {
+
+        $interface_name = Read-Host "Ingrese el nombre de la interfaz que va a cambiar"
+        $interface_newName = Read-Host "Ingrese el nuevo nombre"
+        
+        Write-Host "La interfaz: " -NoNewline
+        Write-Host "$interface_name" -ForegroundColor Cyan -NoNewline
+        Write-Host " ahora se llamará: " -ForegroundColor White -NoNewline
+        Write-Host "$interface_newName" -ForegroundColor Green
+        Write-Host "=========="
+
+        Rename-NetAdapter -Name "$interface_name" -NewName "$interface_newName" -ErrorAction Stop
+    }
+
+    Write-Host "Se ha cambiado con exito el nombre de todas las interfaces!" -ForegroundColor Green
     }
     Catch {
         Write-Host "Error al nombrar el adaptador:" -ForegroundColor Red
@@ -14,10 +28,7 @@
 function ConfigureIPAddress {
     Try {
         # IPv4
-        # New-NetIPAddress -IPAddress 172.30.64.1 -InterfaceAlias "default" -AddressFamily IPv4 -PrefixLength 20 -ErrorAction Stop | Out-Null
-    
         New-NetIPAddress -IPAddress 172.16.0.4 -InterfaceAlias "semita" -AddressFamily IPv4 -PrefixLength 24 -ErrorAction Stop | Out-Null
-
         Write-Host "Se ha cambiado con exito el subneteo de la red!" -ForegroundColor Green
     }
     Catch {
@@ -44,5 +55,5 @@ Clear-Host
 Write-Host "Ejecutando fase 2" -ForegroundColor Yellow;
 
 ConfigureAdapter;
-ConfigureIPAddress;
-SetDNS;
+#ConfigureIPAddress;
+#SetDNS;
