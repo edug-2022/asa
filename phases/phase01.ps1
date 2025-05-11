@@ -1,9 +1,19 @@
-﻿New-Item -Path "C:\Users\Administrator\Documents\WindowsPowerShell\" -Name "Microsoft.Powershell_profile.ps1"
+﻿Clear-Host
 
-Write-Host "Se ha creado un pefil por defecto para Powershell" -ForegroundColor Green
+Write-Host "Ejecutando fase 1" -ForegroundColor Yellow; 
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+Try {
+    New-Item -Path "C:\Users\Administrador\Documents\WindowsPowerShell\" -Name "Microsoft.Powershell_profile.ps1" -ErrorAction Stop
 
-. $profile
+    Write-Host "Se ha creado un pefil por defecto para Powershell" -ForegroundColor Green
 
-Write-Host "Chocolatey ha sido instalado y se ha reiniciado el perfil de PS. (Se recomienda reiniciar el equipo si Chocolatey no funciona)" -ForegroundColor Green
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    . $profile -ErrorAction Stop
+
+    Write-Host "Chocolatey ha sido instalado y se ha reiniciado el perfil de PS. (Se recomienda reiniciar el equipo si Chocolatey no funciona)" -ForegroundColor Green
+}
+
+Catch {
+    Write-Host $_.Exception.Message -ForegroundColor Yellow
+}
