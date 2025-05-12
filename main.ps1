@@ -4,10 +4,11 @@ $phasesPath = Join-Path -Path $PSScriptRoot -ChildPath "phases"
 # Obtener todos los scripts de fase ordenados por nombre
 $phaseScripts = Get-ChildItem -Path $phasesPath -Filter *.ps1 | Sort-Object Name
 $menuOptions = @(
-    "1. Instalar Chocolatey (requiere reinicio)",
+    "1. Instalar Chocolatey",
     "2. Configurar red",
     "3. Configurar reglas de firewall",
-    "4. Instalar Active Directory"
+    "4. Instalar Active Directory (requiere reinicio)"
+    "5. Instalar DHCP"
     "0. Salir"
 )
 
@@ -39,6 +40,7 @@ switch ($_input) {
     2 { $selectedPhase = "phase02.ps1"; }
     3 { $selectedPhase = "phase03.ps1"; }
     4 { $selectedPhase = "phase04.ps1"; }
+    5 { $selectedPhase = "phase05.ps1"; }
     Default { Write-Host "Opcion no válida! Programa finalizado..." -ForegroundColor Red}
 }
 

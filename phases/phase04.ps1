@@ -6,6 +6,7 @@ Try {
 
     Clear-Host
 
+    Write-Host "Ejecutando fase 4" -ForegroundColor Yellow;
     Write-Host "Se ha instalado Active Directory" -ForegroundColor Green
     Write-Host ""
     Write-Host "======= INSTALACION DE AD-DS =======" -ForegroundColor Cyan
