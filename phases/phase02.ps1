@@ -8,13 +8,14 @@
         $interface_name = Read-Host "Ingrese el nombre de la interfaz que va a cambiar"
         $interface_newName = Read-Host "Ingrese el nuevo nombre"
         
+        Rename-NetAdapter -Name "$interface_name" -NewName "$interface_newName" -ErrorAction Stop
+        
         Write-Host "La interfaz: " -NoNewline
         Write-Host "$interface_name" -ForegroundColor Cyan -NoNewline
         Write-Host " ahora se llamará: " -ForegroundColor White -NoNewline
         Write-Host "$interface_newName" -ForegroundColor Green
         Write-Host "=========="
 
-        Rename-NetAdapter -Name "$interface_name" -NewName "$interface_newName" -ErrorAction Stop
     }
 
     Write-Host "Se ha cambiado con exito el nombre de todas las interfaces!" -ForegroundColor Green
@@ -28,7 +29,10 @@
 function ConfigureIPAddress {
     Try {
         # IPv4
-        New-NetIPAddress -IPAddress 172.16.0.4 -InterfaceAlias "semita" -AddressFamily IPv4 -PrefixLength 24 -ErrorAction Stop | Out-Null
+
+        $interface_name = Read-Host "Asigna la IP de la interfaz de red que será configurado"
+
+        New-NetIPAddress -IPAddress 172.16.0.4 -InterfaceAlias "$interface_name" -AddressFamily IPv4 -PrefixLength 24 -ErrorAction Stop | Out-Null
         Write-Host "Se ha cambiado con exito el subneteo de la red!" -ForegroundColor Green
     }
     Catch {
