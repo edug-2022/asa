@@ -7,7 +7,7 @@ $rules = @(
     "CoreNet-Diag-ICMP6-EchoRequest-In-NoScope",
     "CoreNet-Diag-ICMP4-EchoRequest-Out",
     "CoreNet-Diag-ICMP4-EchoRequest-Out-NoScope",
-    "CoreNet-Diag-ICMP6-EchoRequest-In",
+    "CoreNet-Diag-ICMP4-EchoRequest-In",
     "CoreNet-Diag-ICMP4-EchoRequest-In-NoScope"
 )
 
