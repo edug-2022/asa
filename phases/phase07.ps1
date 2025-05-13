@@ -12,9 +12,12 @@ function AddRecordA {
 		$records = @(
 			"www"
 			"ftp"
+			"rdp"
 		)
-
-		Add-DnsServerResourceRecordA -Name "semita-server" -ComputerName "$ip_addr" -ZoneName "$domain_name" -AllowUpdateAny -IPv4Address "$ip_addr"
+		foreach ($record in $records) {
+			Add-DnsServerResourceRecordA -Name "$record" -ComputerName "$ip_addr" -ZoneName "$domain_name" -AllowUpdateAny -IPv4Address "$ip_addr" -ErrorAction Stop
+		}
+		Read-Host "Se han configurado los subdominios correspondientes con éxito!" -Foreground Green 
 	}
 
 	Catch {
