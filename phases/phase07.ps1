@@ -1,6 +1,6 @@
 ﻿function ReverseLookupZone {
 	Try {
-		Add-DnsServerPrimaryZone -NetworkId "$ip_addr" -ReplicationScope "Forest" -ErrorAction Stop	
+		Add-DnsServerPrimaryZone -NetworkId "$ip_addr" -ReplicationScope "Forest"	
 	}
 	Catch { 
 		Write-Host $_.Exception.Message -ForegroundColor Yellow
@@ -15,9 +15,9 @@ function AddRecordA {
 			"rdp"
 		)
 		foreach ($record in $records) {
-			Add-DnsServerResourceRecordA -Name "$record" -ComputerName "$ip_addr" -ZoneName "$domain_name" -AllowUpdateAny -IPv4Address "$ip_addr" -ErrorAction Stop
+			Add-DnsServerResourceRecordA -Name "$record" -ComputerName "$ip_addr" -ZoneName "$domain_name" -AllowUpdateAny -IPv4Address "$ip_addr"
 		}
-		Read-Host "Se han configurado los subdominios correspondientes con éxito!" -Foreground Green 
+		Write-Host "Se han configurado los subdominios correspondientes con éxito!" -Foreground Green 
 	}
 
 	Catch {
