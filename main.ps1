@@ -11,6 +11,7 @@ $menuOptions = @(
     "5. Instalar DHCP"
     "6. Activar conexión al exterior (requiere reinicio)"
     "7. Creación de registros A"
+    "8. Configuración de servicio web"
     "0. Salir"
 )
 
