@@ -1,4 +1,5 @@
 ﻿Clear-Host
+Write-Host "Ejecutando fase 3..." -ForegroundColor DarkYellow
 
 $rules = @(
     "CoreNet-Diag-ICMP6-EchoRequest-Out",

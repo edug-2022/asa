@@ -22,6 +22,6 @@ function EnableNAT {
 }
 
 Clear-History
-Write-Host "Ejecutando fase 6..." -ForegroundColor Yellow
+Write-Host "Ejecutando fase 6..." -ForegroundColor DarkYellow
 EnableDNSForwarder;
 EnableNAT;

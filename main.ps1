@@ -45,6 +45,7 @@ switch ($_input) {
     5 { $selectedPhase = "phase05.ps1"; }
     6 { $selectedPhase = "phase06.ps1"; }
     7 { $selectedPhase = "phase07.ps1"; }
+    8 { $selectedPhase = "phase08.ps1"; }
     Default { Write-Host "Opcion no válida! Programa finalizado..." -ForegroundColor Red}
 }
 

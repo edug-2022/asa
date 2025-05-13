@@ -26,7 +26,7 @@ function AddRecordA {
 }
 
 Clear-History
-Write-Host "Ejecutando fase 6..." -ForegroundColor Yellow
+Write-Host "Ejecutando fase 7..." -ForegroundColor DarkYellow
 $ip_addr = Read-Host "Ingrese la IP del DNS"
 $domain_name = Read-Host "Ingrese el dominio del DNS/AD-DS"
 ReverseLookupZone;
