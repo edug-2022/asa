@@ -18,7 +18,7 @@ function SetNewBindings {
         
         $sites_count = Read-Host "Indique cuantos dominios agregará"
         
-        for ($i = 0; $i -lt $sites_count.Count; $i++) {
+        for ($i = 0; $i -lt $sites_count; $i++) {
             $domain_name = Read-Host "Ingrese el dominio #$i"
 
             New-WebBinding -Name "Default Web Site" -Protocol "http" -Port 80 -IPAddress "172.16.0.2" -HostHeader "$domain_name"
