@@ -10,8 +10,8 @@
 function AddRecordA {
 	Try {
 		$records = @(
-			"www"
-			"ftp"
+			"www",
+			"ftp",
 			"rdp"
 		)
 		foreach ($record in $records) {
