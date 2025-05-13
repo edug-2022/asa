@@ -10,7 +10,7 @@
 function EnableNAT {
 	Try {
 		
-		$nat_name = Read-Host "Ingresa"
+		$nat_name = Read-Host "Ingresa el nuevo nombre de la red NAT"
 		New-NetNat -Name "$nat_name" -InternalIPInterfaceAddressPrefix 172.16.0.0/24
 
 		Write-Host "Red NAT: $nat_name disponible!" -ForegroundColor Green
