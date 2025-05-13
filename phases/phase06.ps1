@@ -1,7 +1,27 @@
-Try {
-	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name "IPEnableRouter" -Value 1
-	WriteHost "Se permite la conexión al exterior. Se recomienda reiniciar el equipo con: shutdown /r /t 0"
+﻿function EnableDNSForwarder {
+	Try {
+		Add-DnsServerForwarder -IPAddress 1.1.1.1 -ErrorAction Stop
+	}
+	Catch { 
+		Write-Host $_.Exception.Message -ForegroundColor Yellow
+	}
 }
-Catch {
-	Write-Host $($_.Exception.Message) -ForegroundColor Yellow
+
+function EnableNAT {
+	Try {
+		
+		$nat_name = Read-Host "Ingresa"
+		New-NetNat -Name "$nat_name" -InternalIPInterfaceAddressPrefix 172.16.0.0/24
+
+		Write-Host "Red NAT: $nat_name disponible!" -ForegroundColor Green
+	}
+
+	Catch {
+		Write-Host $_.Exception.Message -ForegroundColor Yellow
+	}
 }
+
+Clear-History
+Write-Host "Ejecutando fase 6..." -ForegroundColor Yellow
+EnableDNSForwarder;
+EnableNAT;
