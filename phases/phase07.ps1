@@ -14,7 +14,7 @@ function AddRecordA {
 			"ftp"
 		)
 
-		Add-DnsServerResourceRecordA -Name "semita-server" -ComputerName "$ip_addr"
+		Add-DnsServerResourceRecordA -Name "semita-server" -ComputerName "$ip_addr" -ZoneName "$domain_name" -AllowUpdateAny -IPv4Address "$ip_addr"
 	}
 
 	Catch {
@@ -25,5 +25,6 @@ function AddRecordA {
 Clear-History
 Write-Host "Ejecutando fase 6..." -ForegroundColor Yellow
 $ip_addr = Read-Host "Ingrese la IP del DNS"
+$domain_name = Read- Host "Ingrese el dominio del DNS/AD-DS"
 EnableDNSForwarder;
 EnableNAT;
