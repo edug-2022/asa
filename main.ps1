@@ -9,6 +9,7 @@ $menuOptions = @(
     "3. Configurar reglas de firewall",
     "4. Instalar Active Directory (requiere reinicio)"
     "5. Instalar DHCP"
+    "6. Activar conexión al exterior (requiere reinicio)"
     "0. Salir"
 )
 
@@ -41,6 +42,7 @@ switch ($_input) {
     3 { $selectedPhase = "phase03.ps1"; }
     4 { $selectedPhase = "phase04.ps1"; }
     5 { $selectedPhase = "phase05.ps1"; }
+    6 { $selectedPhase = "phase06.ps1"; }
     Default { Write-Host "Opcion no válida! Programa finalizado..." -ForegroundColor Red}
 }
 
