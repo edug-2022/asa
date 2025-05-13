@@ -3,6 +3,7 @@ function InstallWebServer {
 
     if (-not (Test-Path -Path $folderPath)) {
         New-Item -Path $folderPath -ItemType Directory | Out-Null
+        Write-Host "Se ha creado la carpeta 'C:\www'"
     }
 
     Install-WindowsFeature Web-Server
