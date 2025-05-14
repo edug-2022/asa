@@ -8,6 +8,8 @@ function InstallWebServer {
 
     Install-WindowsFeature Web-Server
     Get-Service W3SVC
+
+    Import-Module WebAdministration
     Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name physicalPath -Value "$folderPath"
     Write-Host "Se ha instalado correctamente el servidor web!" -ForegroundColor Green
 }
