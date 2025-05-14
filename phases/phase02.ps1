@@ -30,9 +30,10 @@ function ConfigureIPAddress {
     Try {
         # IPv4
 
-        $interface_name = Read-Host "Asigna la IP de la interfaz de red que será configurado"
+        $interface_name = Read-Host "Asigna el nombre de la interfaz de red interna a configurar"
+	$ip = Read-Host "Ingresa la IP que usarás:"
 
-        New-NetIPAddress -IPAddress 172.16.0.2 -InterfaceAlias "$interface_name" -AddressFamily IPv4 -PrefixLength 24 -ErrorAction Stop | Out-Null
+        New-NetIPAddress -IPAddress "$ip" -InterfaceAlias "$interface_name" -AddressFamily IPv4 -PrefixLength 24 -ErrorAction Stop | Out-Null
         Write-Host "Se ha cambiado con exito el subneteo de la red!" -ForegroundColor Green
     }
     Catch {
