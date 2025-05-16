@@ -1,13 +1,4 @@
-﻿function ReverseLookupZone {
-	Try {
-		Add-DnsServerPrimaryZone -NetworkId "$ip_addr" -ReplicationScope "Forest"	
-	}
-	Catch { 
-		Write-Host $_.Exception.Message -ForegroundColor Yellow
-	}
-}
-
-function AddRecordA {
+﻿function AddRecordA {
 	Try {
 		$records = @(
 			"www",
@@ -22,6 +13,27 @@ function AddRecordA {
 
 	Catch {
 		Write-Host $_.Exception.Message -ForegroundColor Yellow
+	}
+}
+
+function ReverseLookupZone {
+	Try {
+		Add-DnsServer -NetworkId "$ip_addr" -ReplicationScope "Forest"	
+	}
+	Catch { 
+		Write-Host $_.Exception.Message -ForegroundColor Yellow
+	}
+}
+
+function AddRecordPTR {
+	Try {
+		$ip_addr
+		$octets = $ip_addr -split '\.'
+
+		Add-DnsServerResourceRecordPtr -Name "$($octets[3])" -ZoneName "$($octets[2]).$($octets[1]).$($octets[0]).in-addr.arpa" -PtrDomainName "servidor1.ejemplo.local"
+	}
+	Catch {
+		
 	}
 }
 
