@@ -57,8 +57,7 @@ function SetDNS {
 }
 
 Clear-Host
-Write-Host "Ejecutando fase 2" -ForegroundColor DarkYellow;
-
+Write-Host "Ejecutando fase 2..." -ForegroundColor DarkYellow;
 ConfigureAdapter;
 ConfigureIPAddress;
 SetDNS;

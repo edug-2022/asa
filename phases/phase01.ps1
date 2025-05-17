@@ -1,6 +1,5 @@
 ﻿Clear-Host
-
-Write-Host "Ejecutando fase 1" -ForegroundColor DarkYellow; 
+Write-Host "Ejecutando fase 1..." -ForegroundColor DarkYellow; 
 
 Try {
 

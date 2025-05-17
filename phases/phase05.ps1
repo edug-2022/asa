@@ -13,6 +13,6 @@ function InstallDHCP {
 }
 
 Clear-Host
-Write-Host "Ejecutando fase 5" -ForegroundColor DarkYellow;
+Write-Host "Ejecutando fase 5..." -ForegroundColor DarkYellow;
 InstallDHCP;
 

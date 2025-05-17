@@ -1,4 +1,4 @@
-function InstallWebServer {
+﻿function InstallWebServer {
     $folderPath = "C:\www"
 
     if (-not (Test-Path -Path $folderPath)) {
