@@ -1,45 +1,60 @@
-﻿function AddRecordA {
-	Try {
-		$records = @(
-			"www",
-			"ftp",
-			"rdp"
-		)
-		foreach ($record in $records) {
-			Add-DnsServerResourceRecordA -Name "$record" -ComputerName "$ip_addr" -ZoneName "$domain_name" -AllowUpdateAny -IPv4Address "$ip_addr"
-		}
-		Write-Host "Se han configurado los subdominios correspondientes con éxito!" -Foreground Green 
-	}
-
-	Catch {
-		Write-Host $_.Exception.Message -ForegroundColor Yellow
-	}
+﻿# Zona directa
+function AddDirectZone {
+    Try {
+        $domain_name = Read-Host "Ingrese su dominio"
+        Add-DnsServerPrimaryZone -Name "$domain_name" -ZoneFile "$domain_name.dns" -ErrorAction Stop
+    }
+    Catch {
+        Write-Host $($_.Exception.Message) -ForegroundColor DarkYellow
+    }
 }
 
-function ReverseLookupZone {
-	Try {
-		Add-DnsServer -NetworkId "$ip_addr" -ReplicationScope "Forest"	
-	}
-	Catch { 
-		Write-Host $_.Exception.Message -ForegroundColor Yellow
-	}
+function AddRecordsA {
+    Try {
+        $domain = Read-Host "Ingrese el dominio principal"
+        $ip_addr = Read-Host "Ingrese la IP del servidor"
+	    $subdomains_list = Read-Host "Ingrese los subdominios que se usaran como registros A. (Use comas para separar los dominios y no agregue espacios innecesarios)"
+	    $subdomains = $subdomains_list -split '\,'
+
+        foreach ($subdomain in $subdomains)  {
+		     Add-DnsServerResourceRecordA -Name "$subdomain" -ZoneName "$domain" -IPv4Address "$ip_addr" -ErrorAction Stop
+        }
+
+	    Write-Host "-Se ha agregado los dominios: '$subdomains' al registro" -ForegroundColor Green
+    }
+    Catch {
+        Write-Host $($_.Exception.Message) -ForegroundColor DarkYellow  
+    }
+}
+
+function AddInverseZone {
+    Try {
+        $ip_addr_net = Read-Host "Ingrese su IP de red (x.x.x.0)"
+        $octets = $ip_addr -split '\.'
+        Add-DnsServerPrimaryZone -NetworkId "$ip_addr_net/24" -ZoneFile "$($octets[2]).$($octets[1]).$($octets[0]).in-addr.arpa.dns"
+	    Write-Host "-Se ha agregado la zona inversa al registro" -ForegroundColor Green
+    }
+
+    Catch {
+        Write-Host $($_.Exception.Message) -ForegroundColor DarkYellow
+    }
 }
 
 function AddRecordPTR {
-	Try {
-		$ip_addr
-		$octets = $ip_addr -split '\.'
-
-		Add-DnsServerResourceRecordPtr -Name "$($octets[3])" -ZoneName "$($octets[2]).$($octets[1]).$($octets[0]).in-addr.arpa" -PtrDomainName "servidor1.ejemplo.local"
-	}
-	Catch {
-		
-	}
+    Try {
+        $ip_addr = Read-Host "Ingrese la IP del servidor"
+        $octets = $ip_addr -split '\.'
+        Add-DnsServerResourceRecordPtr -Name "$(octets[3])" -Zone "$($octets[2]).$($octets[1]).$($octets[0]).in-addr.arpa" -PtrDomainName "semita.sv"
+	    Write-Host "-Se ha agregado el puntero $domain al registro" -ForegroundColor Green
+    }
+    Catch {
+        Write-Host $($_.Exception.Message) -ForegroundColor DarkYellow
+    }
 }
 
-Clear-History
+Clear-Host
 Write-Host "Ejecutando fase 7..." -ForegroundColor DarkYellow
-$ip_addr = Read-Host "Ingrese la IP del DNS"
-$domain_name = Read-Host "Ingrese el dominio del DNS/AD-DS"
-ReverseLookupZone;
-AddRecordA;
+AddDirectZone;
+AddRecordsA;
+AddInverseZone;
+AddRecordPTR;
