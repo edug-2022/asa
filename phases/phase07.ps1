@@ -44,7 +44,7 @@ function AddRecordPTR {
     Try {
         $ip_addr = Read-Host "Ingrese la IP del servidor"
         $octets = $ip_addr -split '\.'
-        Add-DnsServerResourceRecordPtr -Name "$(octets[3])" -Zone "$($octets[2]).$($octets[1]).$($octets[0]).in-addr.arpa" -PtrDomainName "semita.sv"
+        Add-DnsServerResourceRecordPtr -Name "$($octets[3])" -Zone "$($octets[2]).$($octets[1]).$($octets[0]).in-addr.arpa" -PtrDomainName "semita.sv"
 	    Write-Host "-Se ha agregado el puntero $domain al registro" -ForegroundColor Green
     }
     Catch {
