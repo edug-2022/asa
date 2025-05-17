@@ -12,6 +12,7 @@ $menuOptions = @(
     "6. Activar conexión al exterior (requiere reinicio)"
     "7. Creación de registros A"
     "8. Configuración de servicio web"
+    "9. Creación de usuarios en AD"
     "0. Salir"
 )
 
@@ -47,6 +48,7 @@ switch ($_input) {
     6 { $selectedPhase = "phase06.ps1"; }
     7 { $selectedPhase = "phase07.ps1"; }
     8 { $selectedPhase = "phase08.ps1"; }
+    9 { $selectedPhase = "phase09.ps1" }
     Default { Write-Host "Opcion no válida! Programa finalizado..." -ForegroundColor Red}
 }
 
