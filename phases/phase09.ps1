@@ -64,7 +64,7 @@ function CreateCert {
     New-WebBinding -Name "Default Web Site" -Protocol https -Port 443 -HostHeader "www.semita.sv"
 
     # Establecer sslFlags en 1 para indicar que requiere SSL y usar SNI (Server Name Indication)
-    Get-WebBinding -Name "Default Web Site" -Protocol https | Set-WebBinding -PropertyName sslFlags -Value 1
+    Get-WebBinding -Name "Default Web Site" -Protocol https | Set-WebBinding -PropertyName sslFlags -Value 1 -Name "Default Web Site"
 
     # Añadir nuevos bindings específicos con dirección IP y hostnames personalizados
     New-WebBinding -Name "Default Web Site" -Protocol "https" -Port 443 -IPAddress "172.16.0.2" -HostHeader "semita.sv"
